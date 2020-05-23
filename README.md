@@ -1,3 +1,5 @@
+## CircleCI status
+[![CircleCI](https://circleci.com/gh/Cristi-1989/udacity-docker/tree/master.svg?style=svg)](https://circleci.com/gh/Cristi-1989/udacity-docker/tree/master)
 
 ## Project summary
 
