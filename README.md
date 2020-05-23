@@ -16,13 +16,13 @@ I have covered all the required steps, adding or completing the following files:
 
 ## Running the application
 
-# Run the application using docker
+### Run the application using docker
 ./run_docker.sh
 (in another terminal window) ./make_prediction.sh
 
-# Run the application using k8s
+### Run the application using k8s
 ./run_kubernetes.sh
 (in another terminal window) ./make_prediction.sh
 
-# lint the application
+### lint the application
 make setup && make lint
