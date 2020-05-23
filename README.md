@@ -13,3 +13,16 @@ I have covered all the required steps, adding or completing the following files:
 * run_kubernetes.sh: crististoica/udacity:v1 image as a container exposing container port 80
   - I introduced a "sleep 1" in order to wait for the pod to be in "Running" state before forwarding to host port 8000
 * output-txt_files/kubernetes_out.txt: added logs showing handling of connection on 8000 when running make_prediction.sh in different port
+
+## Running the application
+
+# Run the application using docker
+./run_docker.sh
+(in another terminal window) ./make_prediction.sh
+
+# Run the application using k8s
+./run_kubernetes.sh
+(in another terminal window) ./make_prediction.sh
+
+# lint the application
+make setup && make lint
