@@ -1,42 +1,15 @@
-<include a CircleCI status badge, here>
 
-## Project Overview
+## Project summary
 
-In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
+I have covered all the required steps, adding or completing the following files:
 
-You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
-
-### Project Tasks
-
-Your project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:
-* Test your project code using linting
-* Complete a Dockerfile to containerize this application
-* Deploy your containerized application using Docker and make a prediction
-* Improve the log statements in the source code for this application
-* Configure Kubernetes and create a Kubernetes cluster
-* Deploy a container using Kubernetes and make a prediction
-* Upload a complete Github repo with CircleCI to indicate that your code has been tested
-
-You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
-
-**The final implementation of the project will showcase your abilities to operationalize production microservices.**
-
----
-
-## Setup the Environment
-
-* Create a virtualenv and activate it
-* Run `make install` to install the necessary dependencies
-
-### Running `app.py`
-
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
-
-### Kubernetes Steps
-
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+* Makefile: for setup, install and lint the app.py application. I also had to add pylint to the requirements.txt file so that I could use it for linting
+* Dockerfile: created an app folder and copied all files there, ran the pip install as another docker layer, exposed the 80 port and set the workdir to the app folder in order to run the app.py appication at startup
+ - running the "make lint" linted the dockerfile with hadolint at 100%
+* run_docker.sh: built the udacity_prediction_app image and ran it exposiing it on the host port 8000, to match the port from make_prediction.sh
+* upload_docker.sh:  added to it to push the image to my dockerhub at crististoica/udacity:v1
+* app.py: added info log line at line 66
+* output-txt_files/docker_out.txt contains output of running the container with run_docker.sh and then in another terminal make_prediction.sh
+* run_kubernetes.sh: crististoica/udacity:v1 image as a container exposing container port 80
+  - I introduced a "sleep 1" in order to wait for the pod to be in "Running" state before forwarding to host port 8000
+* output-txt_files/kubernetes_out.txt: added logs showing handling of connection on 8000 when running make_prediction.sh in different port
